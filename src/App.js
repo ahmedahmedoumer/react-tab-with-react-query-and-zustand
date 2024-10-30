@@ -45,7 +45,7 @@ function App() {
           ) : (
             <div>
               <div>{content}</div>
-              <button onClick={invalidateContent}>
+              <button className='hover:bg-green-200 hover:px-2 hover:text-green-900' onClick={invalidateContent}>
                 Refresh Content
               </button>
             </div>

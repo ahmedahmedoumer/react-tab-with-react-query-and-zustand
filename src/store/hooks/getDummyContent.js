@@ -22,13 +22,13 @@ export const useFetchContents = (paragraph) => {
         queryKey: ['fetchContents', paragraph],
         queryFn: () => fetchLoremParagraphs(paragraph),
         staleTime: 5 * 60 * 1000,
-        cacheTime: 30 * 60 * 1000,
+        cacheTime: 3 * 60 * 1000,
     });
 
     return {
         ...query,
         prefetchNextContent,
         invalidateContent: () => 
-            queryClient.invalidateQueries({ queryKey: ['fetchContents', paragraph] })
+            query.isSuccess && queryClient.invalidateQueries({ queryKey: ['fetchContents', paragraph] })
     };
 };
